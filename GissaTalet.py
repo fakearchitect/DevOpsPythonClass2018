@@ -7,48 +7,53 @@ import random
 
 # Gissa talet!
 os.system('clear')
-print("\n\n                           GISSA TALET!")
+print("\n\n                         GUESS THE NUMBER!")
 print("\n")
 points = 100
-slump = random.randrange(0,100)
+randNum = random.randrange(0,100)
 try:
-    gissning = int(input("          Skriv ett tal mellan 0 och 100, och tryck retur.\n\n                                "))
+    yourGuess = int(input("        Type an integer between 0 and 100, then press Enter.\n\n                                "))
 except ValueError:
-    print("\n           Du skrev inte ett giltigt tal!")
+    print("\nHey, that's not an integer!")
     sys.exit(1)
-x = gissning
+if ((yourGuess < 0) or (yourGuess > 100)):
+    print("\nI was very specific about the allowed range. Please don't try again.")
+    sys.exit(1)
+x = yourGuess
 print("\n")
 
-print("----Här är alla nummer mellan din gissning och det rätta svaret----\n")
-if (slump < x):
-    #print(slump)
-    while(slump != x):
+print("These are all the numbers between your guess and the correct number:\n")
+if (randNum < x):
+    #print(randNum)
+    while(randNum != x):
         x = x - 1
         points = points - 1
-        if (x != slump):
+        if (x != randNum):
             print(x, end=" ")
     print("\n")
-elif (slump == gissning):
-    print("Grattis du gissade rätt!")
+elif (randNum == yourGuess):
+    print("You guessed it right, you maniac!")
 else:
-    while(slump != x):
+    while(randNum != x):
         x = x + 1
         points = points - 1
-        if (x != slump):
+        if (x != randNum):
             print(x, end=" ")
     print("\n")
 
 print("-------------------------------------------------------------------\n")
 print("\n")
-print("                         Din gissning:", gissning, "\n")
-print("                         Rätta svaret:", slump, "\n")
+print("                           Your guess:", yourGuess, "\n")
+print("                        The right number:", randNum, "\n")
 #print("\n")
 print("               ", end="")
 
 print("\n")
-print("                >>>>>    Du fick", points, "poäng!    <<<<<\n\n")
-if (points >= 70):
-    print("                          Snyggt jobbat!")
+print("                >>>>>    Score:", points, "points!    <<<<<\n\n")
+if (points == 100):
+    print("                 Man, this stuff could make you rich!")
+elif (points >= 80):
+    print("                      Huh! That's pretty good!")
 else:
-    print("                 Bättre lycka nästa gång, kompis!")
+    print("                    Better luck next time, pal!")
 print("\n")
