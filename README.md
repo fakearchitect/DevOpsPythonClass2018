@@ -1,33 +1,81 @@
 # DevOpsPythonClass2018
 
-GissaTalet.py is a game. This is what it looks like:
+With CountingCards.py, I'm playing around with escape codes to display colors and symbbols in a terminal.
+
+Screen 1:
+```
+
+ MISSION:
+ COUNT ALL THE HEARTS!
+
+ CHOOSE DIFFICULTY, 1-9
+ (HIGHER IS HARDER)
+
+ THEN PRESS ENTER TO BEGIN!
 
 
 
 
-                         GUESS THE NUMBER!
-
-
-        Type an integer between 0 and 100, then press Enter.
-
-                                34
-
-
-These are all the numbers between your guess and the correct number:
-
-33 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 
-
--------------------------------------------------------------------
 
 
 
-                           Your guess: 34 
-
-                        The right number: 11 
-
-               
-
-                >>>>>    Score: 77 points!    <<<<<
 
 
-                    Better luck next time, pal!
+
+
+```
+Screen 2:
+```
+
+  ♦  ♠  ♠  ♠  ♠  ♠  ♣  ♣  ♠  ♠  ♦  ♥
+
+  ♥  ♥  ♦  ♥  ♥  ♦  ♦  ♦  ♥  ♥  ♠  ♥
+
+  ♥  ♥  ♠  ♥  ♣  ♣  ♥  ♥  ♥  ♦  ♥  ♥
+
+  ♥  ♠  ♥  ♥  ♥  ♥  ♦  ♣  ♠  ♠  ♦  ♠
+
+  ♠  ♥  ♠  ♣  ♥  ♦  ♠  ♦  ♠  ♣  ♠  ♥
+
+  ♦  ♥  ♣  ♦  ♠  ♣  ♥  ♠  ♠  ♦  ♠  ♥
+
+  ♣  ♠  ♠  ♠  ♣  ♥  ♦  ♥  ♠  ♥  ♠  ♦
+
+  ♥  ♠  ♣  ♣  ♦  ♦  ♦  ♠  ♥  ♦  ♦  ♥
+
+  ♣  ♥  ♣  ♣  ♦  ♣  ♠  ♠  ♠  ♠  ♠  ♠
+
+  ░░░░░░░░▒▒▒▒▓▓▓▓▓▓▓░░░▒
+
+```
+Screen 3:
+```
+ NOW, LET'S SEE HOW YOU DID!
+
+
+                    ♣01♣02
+
+
+
+              ♣03♣04
+
+                       ♣05
+
+           ♣06               ♣07
+
+        ♣08      ♣09
+
+  ♣10         ♣11
+
+        ♣12♣13
+
+  ♣14   ♣15♣16   ♣17
+
+
+ YOU COUNTED 34 CLUBS.
+
+ THE CORRECT ANSWER IS 17!
+
+
+ YOUR SCORE: 0
+```
