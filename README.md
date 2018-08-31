@@ -1,6 +1,6 @@
 # DevOpsPythonClass2018
 
-With CountingCards.py, I'm playing around with escape codes to display colors and symbbols in a terminal.
+With CountingCards.py, I'm playing around with escape codes to display colors and symbols in a terminal.
 
 Screen 1:
 ```
