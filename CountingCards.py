@@ -5,6 +5,7 @@ import subprocess
 import random
 import time
 import locale
+import datetime
 
 # Recommended terminal settings: Size: 38*38, Font: Speccy Medium 24p, Forground: White, Background: Black
 
@@ -62,10 +63,10 @@ def startScreen():
 		print("\n" + margin1 + "CHOOSE DIFFICULTY, 1-9\n" + margin1 + "(HIGHER IS HARDER)\n\n" + margin1 + "THEN PRESS ENTER TO BEGIN!")
 		difficulty = int(input("\n\n\n\n\n\n\n >"))
 	except ValueError:
-	    print("\n\n" + margin1 + "INTEGERS 1 THROUGH 9, WAS IT THAT HARD?\n\n")
+	    print("\n\n" + "INTEGERS 1 THROUGH 9, WAS IT SO HARD?\n\n")
 	    sys.exit(1)
 	if ((difficulty < 1) or (difficulty > 9)):
-	    print("\n\n" + margin1 + "INTEGERS 1 THROUGH 9, WAS IT THAT HARD?\n\n")
+	    print("\n\n" + "INTEGERS 1 THROUGH 9, WAS IT SO HARD?\n\n")
 	    sys.exit(1)
 
 
@@ -222,7 +223,7 @@ def theAnswer():
 
 def theScore():
 	global endScore
-# The score is calculated as follows
+# The score is calculated as follows:
 	percentRight = (((quantOfTheColor - abs(quantOfTheColor-theCount)) / quantOfTheColor) * 100)
 	if percentRight < 70:
 		ratioScore = (percentRight * 0.1)
@@ -239,6 +240,49 @@ def theScore():
 	else:
 		newQuant = quantOfTheColor
 	endScore = int((ratioScore * difficulty) * (newQuant / 10)) # The game keeps the change
+
+
+def checkHighscore(endScore):
+	filename = (os.path.dirname(__file__) + '/CChigh.txt')
+	try:
+		HSfile = open(filename,'r')
+		highScore = HSfile.readlines()
+		HSfile.close()
+	except:
+		newHighscore()
+	highColor = ""
+	try:
+		if (endScore > int(highScore[0])):
+			newHighscore()
+		else:
+			if (len(highScore) == 7):
+				if (highScore[4].rstrip() == "HEART"): highColor = (u"\u2665")
+				if (highScore[4].rstrip() == "SPADE"): highColor = (u"\u2660")
+				if (highScore[4].rstrip() == "DIAMOND"): highColor = (u"\u2666")
+				if (highScore[4].rstrip() == "CLUB"): highColor = (u"\u2663")
+				print("\n" + margin1 + "HIGHSCORE:  " + highScore[0].rstrip())
+				print(margin1 + highScore[1].rstrip(), highScore[2].rstrip() + "/" + highScore[3].rstrip() + highColor, "DIFF:" + highScore[5].rstrip(), highScore[6].rstrip(), end="\n\n")
+			else:
+				newHighscore()
+	except:
+		sys.exit(1)
+
+
+def newHighscore():
+	print(" NEW HIGHSCORE!!!")
+	sys.stdout.flush()
+	time.sleep(3)
+	os.system('clear')
+	highName = input(" CONGRATULATIONS,\n YOU MADE THE ALL-TIME HIGHSCORE!\n\n PLEASE TYPE YOUR NAME (MAX 12 CHARS)\n\n\n\n >")
+	highName = highName.upper()
+	datum = []
+	today = datetime.date.today()
+	datum.append(today)
+	filename = (os.path.dirname(__file__) + '/CChigh.txt')
+	HSfile = open(filename,'w')
+	HSfile.write(str(endScore) + "\n" + highName + "\n" + str(theCount) + "\n" + str(quantOfTheColor) + "\n" + theColor + "S\n" + str(difficulty) + "\n" + str(datum[0]))
+	HSfile.close()
+
 
 
 def endScreen(width):
@@ -276,8 +320,8 @@ def endScreen(width):
 	if (theCount == quantOfTheColor): # <------------------------------------------------------------------------ Ändra till quantOfTheColor
 		print("\n\n\n" + margin1 + "\033[32;5mYOU COUNTED", str(theCount), theColor + "S.\n\n" + margin1 + "THE CORRECT ANSWER IS", str(quantOfTheColor) + "!\n\n\n" + margin1 + "YOUR SCORE: " + str(endScore) + "\33[0m\n\n\n\n\n")
 	else:
-		print("\n\n\n" + margin1 + "YOU COUNTED", str(theCount), theColor + "S.\n\n" + margin1 + "THE CORRECT ANSWER IS", str(quantOfTheColor) + "!\n\n\n" + margin1 + "YOUR SCORE: " + str(endScore) + "\n\n\n\n\n")
-
+		print("\n\n\n" + margin1 + "YOU COUNTED", str(theCount), theColor + "S.\n\n" + margin1 + "THE CORRECT ANSWER IS", str(quantOfTheColor) + "!\n\n\n" + margin1 + "YOUR SCORE: " + str(endScore))
+	checkHighscore(endScore)
 
 placeTheColor(theColor)
 placeTheRest()
