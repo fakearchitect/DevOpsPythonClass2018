@@ -24,7 +24,9 @@ import os
        47    White
 '''
 
-#print('\33[0m\033[33m' + str(theColorCount).zfill(2), end="\33[0m")
+# '\33[0m'
+# '\033[33m'
+
 # (u"\u2554") + ╔
 # (u"\u255A") + ╚
 # (u"\u2557") + ╗
